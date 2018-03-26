@@ -1,0 +1,27 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: zjack-api
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs6.10
+  profile: serverless
+  stage: dev
+  region: us-east-1
+
+# The `functions` block defines what code to deploy
+functions:
+  ping:
+    handler: handler.ping
+    # The `events` block defines how to trigger the handler.ping code
+    events:
+      - http:
+          path: ping
+          method: get
+          cors: true
