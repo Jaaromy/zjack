@@ -25,3 +25,11 @@ functions:
           path: ping
           method: get
           cors: true
+  randomDeck:
+    handler: handler.randomDeck
+    # The `events` block defines how to trigger the handler.randomDeck code
+    events:
+      - http:
+          path: randomdeck
+          method: get
+          cors: true
