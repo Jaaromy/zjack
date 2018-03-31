@@ -2,7 +2,7 @@
 
 const card = require('app.js');
 
-module.exports.ping = (event, context, callback) => {
+module.exports.test = (event, context, callback) => {
 	let sourceIp = null;
 	let sourceUserAgent = null;
 
@@ -17,7 +17,7 @@ module.exports.ping = (event, context, callback) => {
 			'Access-Control-Allow-Origin': '*', // Required for CORS support to work
 		},
 		body: JSON.stringify({
-			message: 'Ping Successful',
+			message: 'Test Successful',
 			sourceIp: sourceIp,
 			sourceUserAgent: sourceUserAgent,
 			deck: card.createDeck(),
@@ -49,4 +49,26 @@ module.exports.randomDeck = (event, context, callback) => {
 	};
 
 	callback(null, response);
+};
+
+
+module.exports.createRuleTable = (event, context, callback) => {
+	try {
+		let orig = card.tryParseJSON(event.body);
+		let result = card.createTable(orig);
+		const response = {
+			statusCode: 200,
+			headers: {
+				'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+			},
+			body: JSON.stringify(result)
+		};
+
+		callback(null, response);
+	} catch (error) {
+		callback(null, {
+			statusCode: 500,
+			message: error
+		})
+	}
 };

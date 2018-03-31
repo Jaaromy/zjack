@@ -17,12 +17,12 @@ provider:
 
 # The `functions` block defines what code to deploy
 functions:
-  ping:
-    handler: handler.ping
-    # The `events` block defines how to trigger the handler.ping code
+  test:
+    handler: handler.test
+    # The `events` block defines how to trigger the handler.test code
     events:
       - http:
-          path: ping
+          path: test
           method: get
           cors: true
   randomDeck:
@@ -32,4 +32,12 @@ functions:
       - http:
           path: randomdeck
           method: get
+          cors: true
+  createRuleTable:
+    handler: handler.createRuleTable
+    # The `events` block defines how to trigger the handler.createRuleTable code
+    events:
+      - http:
+          path: createruletable
+          method: post
           cors: true

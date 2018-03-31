@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Jaaromy/zjack/issues"
   },
-  "homepage": "https://github.com/Jaaromy/zjack#readme"
+  "homepage": "https://github.com/Jaaromy/zjack#readme",
+  "dependencies": {
+    "aws-sdk": "^2.216.1",
+    "cuid": "^2.1.0"
+  }
 }
